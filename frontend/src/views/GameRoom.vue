@@ -103,6 +103,9 @@ import wsService from '@/services/websocket'
 // Game Components
 import Timer from '@/components/Timer.vue'
 import WouldYouRather from '@/components/games/WouldYouRather.vue'
+import TruthOrDare from '@/components/games/TruthOrDare.vue'
+import SixtySeconds from '@/components/games/SixtySeconds.vue'
+import HotSeat from '@/components/games/HotSeat.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -112,7 +115,10 @@ const authStore = useAuthStore()
 
 const gameComponents = {
   would_you_rather: WouldYouRather,
-  // Add other game components here
+  truth_or_dare: TruthOrDare,
+  sixty_seconds: SixtySeconds,
+  hot_seat: HotSeat,
+  // draw_guess: DrawGuess, // TODO: Implement drawing component
 }
 
 const gameComponent = computed(() => {

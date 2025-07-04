@@ -14,9 +14,6 @@
       </div>
       
       <form class="mt-8 space-y-6" @submit.prevent="handleSubmit">
-        <div v-if="error" class="bg-bold-red/10 border border-bold-red/20 text-bold-red px-4 py-3 rounded">
-          {{ error }}
-        </div>
         
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
@@ -48,14 +45,15 @@
         </div>
 
         <div>
-          <button
+          <Button
             type="submit"
-            :disabled="loading"
-            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-pure-white bg-electric-blue hover:bg-electric-blue/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-electric-blue disabled:opacity-50 disabled:cursor-not-allowed"
+            variant="primary"
+            size="lg"
+            full-width
+            :loading="loading"
           >
-            <span v-if="loading">Signing in...</span>
-            <span v-else>Sign in</span>
-          </button>
+            Sign in
+          </Button>
         </div>
       </form>
     </div>
@@ -66,10 +64,13 @@
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
+import { useToast } from '@/composables/useToast'
+import Button from '@/components/ui/Button.vue'
 
 const router = useRouter()
 const route = useRoute()
 const authStore = useAuthStore()
+const toast = useToast()
 
 const form = reactive({
   email: '',
@@ -77,20 +78,21 @@ const form = reactive({
 })
 
 const loading = ref(false)
-const error = ref('')
 
 const handleSubmit = async () => {
   loading.value = true
-  error.value = ''
   
   try {
     await authStore.login(form)
+    
+    toast.success('Welcome back!', 'Successfully signed in')
     
     // Redirect to intended page or dashboard
     const redirect = route.query.redirect || '/dashboard'
     router.push(redirect)
   } catch (err) {
-    error.value = err.response?.data?.detail || 'Login failed. Please check your credentials.'
+    const errorMessage = err.response?.data?.detail || 'Login failed. Please check your credentials.'
+    toast.error('Sign in failed', errorMessage)
   } finally {
     loading.value = false
   }

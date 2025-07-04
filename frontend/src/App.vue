@@ -1,19 +1,24 @@
 <template>
-  <div id="app" class="min-h-screen bg-pure-white">
-    <Navbar v-if="showNavbar" />
-    <main class="flex-1">
-      <router-view />
-    </main>
-    <AdBanner v-if="showAds" />
-  </div>
+  <ErrorBoundary>
+    <div id="app" class="min-h-screen bg-pure-white">
+      <Navbar v-if="showNavbar" />
+      <main class="flex-1">
+        <router-view />
+      </main>
+      <AdBanner v-if="showAds" />
+      <ToastContainer />
+    </div>
+  </ErrorBoundary>
 </template>
 
 <script setup>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
+import ErrorBoundary from '@/components/ErrorBoundary.vue'
 import Navbar from '@/components/Navbar.vue'
 import AdBanner from '@/components/AdBanner.vue'
+import ToastContainer from '@/components/ToastContainer.vue'
 
 const route = useRoute()
 const authStore = useAuthStore()
