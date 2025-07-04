@@ -1,10 +1,10 @@
 <template>
-  <nav class="bg-white shadow-sm border-b border-gray-200">
+  <nav class="bg-pure-white shadow-sm border-b border-cool-gray">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <div class="flex">
           <router-link to="/" class="flex items-center">
-            <span class="text-2xl font-bold text-indigo-600">🎮 GameNight</span>
+            <span class="text-2xl font-bold text-electric-blue">🎮 GameNight</span>
           </router-link>
         </div>
 
@@ -12,14 +12,14 @@
           <template v-if="authStore.isAuthenticated">
             <router-link 
               to="/dashboard" 
-              class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium"
+              class="text-jet-black hover:text-electric-blue px-3 py-2 rounded-md text-sm font-medium"
             >
               Dashboard
             </router-link>
             
             <router-link 
               to="/create-room" 
-              class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium"
+              class="text-jet-black hover:text-electric-blue px-3 py-2 rounded-md text-sm font-medium"
             >
               Create Room
             </router-link>
@@ -27,7 +27,7 @@
             <router-link 
               v-if="!authStore.isPaidUser"
               to="/subscription" 
-              class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:from-purple-700 hover:to-indigo-700"
+              class="bg-bold-red text-pure-white px-4 py-2 rounded-md text-sm font-medium hover:bg-bold-red/90"
             >
               🌟 Go Premium
             </router-link>
@@ -35,7 +35,7 @@
             <div class="relative">
               <button 
                 @click="showDropdown = !showDropdown"
-                class="flex items-center text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium"
+                class="flex items-center text-jet-black hover:text-electric-blue px-3 py-2 rounded-md text-sm font-medium"
               >
                 <span>{{ authStore.user?.email }}</span>
                 <svg class="ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
@@ -45,11 +45,11 @@
               
               <div 
                 v-if="showDropdown"
-                class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50"
+                class="absolute right-0 mt-2 w-48 bg-pure-white rounded-md shadow-lg py-1 z-50"
               >
                 <button 
                   @click="logout"
-                  class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  class="block w-full text-left px-4 py-2 text-sm text-jet-black hover:bg-cool-gray/20"
                 >
                   Logout
                 </button>
@@ -60,13 +60,13 @@
           <template v-else>
             <router-link 
               to="/login" 
-              class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium"
+              class="text-jet-black hover:text-electric-blue px-3 py-2 rounded-md text-sm font-medium"
             >
               Login
             </router-link>
             <router-link 
               to="/register" 
-              class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700"
+              class="bg-electric-blue text-pure-white px-4 py-2 rounded-md text-sm font-medium hover:bg-electric-blue/90"
             >
               Sign Up
             </router-link>

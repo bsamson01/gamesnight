@@ -1,71 +1,71 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="min-h-screen flex items-center justify-center bg-pure-white py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
       <div>
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Create your account
+        <h2 class="mt-6 text-center text-3xl font-extrabold text-jet-black">
+          Create a new account
         </h2>
-        <p class="mt-2 text-center text-sm text-gray-600">
+        <p class="mt-2 text-center text-sm text-cool-gray">
           Or
-          <router-link to="/login" class="font-medium text-indigo-600 hover:text-indigo-500">
-            sign in to existing account
+          <router-link to="/login" class="font-medium text-electric-blue hover:text-electric-blue/80">
+            sign in to your existing account
           </router-link>
         </p>
       </div>
       
       <form class="mt-8 space-y-6" @submit.prevent="handleSubmit">
-        <div v-if="error" class="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded">
+        <div v-if="error" class="bg-bold-red/10 border border-bold-red/20 text-bold-red px-4 py-3 rounded">
           {{ error }}
         </div>
         
         <div class="space-y-4">
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-700">
+            <label for="email" class="block text-sm font-medium text-jet-black">
               Email address
             </label>
             <input
               id="email"
-              v-model="form.email"
               name="email"
               type="email"
               autocomplete="email"
               required
-              class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+              v-model="form.email"
+              class="mt-1 appearance-none relative block w-full px-3 py-2 border border-cool-gray placeholder-cool-gray text-jet-black rounded-md focus:outline-none focus:ring-electric-blue focus:border-electric-blue focus:z-10 sm:text-sm"
               placeholder="you@example.com"
-            />
+            >
           </div>
           
           <div>
-            <label for="password" class="block text-sm font-medium text-gray-700">
+            <label for="password" class="block text-sm font-medium text-jet-black">
               Password
             </label>
             <input
               id="password"
-              v-model="form.password"
               name="password"
               type="password"
               autocomplete="new-password"
               required
+              v-model="form.password"
               minlength="8"
-              class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-              placeholder="At least 8 characters"
-            />
+              class="mt-1 appearance-none relative block w-full px-3 py-2 border border-cool-gray placeholder-cool-gray text-jet-black rounded-md focus:outline-none focus:ring-electric-blue focus:border-electric-blue focus:z-10 sm:text-sm"
+              placeholder="Minimum 8 characters"
+            >
           </div>
           
           <div>
-            <label for="confirmPassword" class="block text-sm font-medium text-gray-700">
+            <label for="confirmPassword" class="block text-sm font-medium text-jet-black">
               Confirm Password
             </label>
             <input
               id="confirmPassword"
-              v-model="form.confirmPassword"
               name="confirmPassword"
               type="password"
               autocomplete="new-password"
               required
-              class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-              placeholder="Confirm your password"
-            />
+              v-model="form.confirmPassword"
+              class="mt-1 appearance-none relative block w-full px-3 py-2 border border-cool-gray placeholder-cool-gray text-jet-black rounded-md focus:outline-none focus:ring-electric-blue focus:border-electric-blue focus:z-10 sm:text-sm"
+              placeholder="Re-enter your password"
+            >
           </div>
         </div>
 
@@ -73,15 +73,15 @@
           <button
             type="submit"
             :disabled="loading"
-            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-pure-white bg-electric-blue hover:bg-electric-blue/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-electric-blue disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <span v-if="loading">Creating account...</span>
             <span v-else>Create account</span>
           </button>
         </div>
         
-        <div class="text-xs text-gray-600 text-center">
-          By creating an account, you agree to our Terms of Service and Privacy Policy
+        <div class="text-xs text-cool-gray text-center">
+          By creating an account, you agree to our terms and conditions.
         </div>
       </form>
     </div>

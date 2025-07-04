@@ -1,17 +1,17 @@
 <template>
-  <div class="flex items-center space-x-2">
-    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+  <div class="flex items-center justify-center space-x-2">
+    <svg class="w-5 h-5 text-cool-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
     <span 
       class="font-mono text-lg"
       :class="{
-        'text-red-600': remaining <= 10,
-        'text-yellow-600': remaining > 10 && remaining <= 30,
-        'text-gray-800': remaining > 30
+        'text-bold-red': remaining <= 10,
+        'text-electric-blue': remaining > 10 && remaining <= 30,
+        'text-jet-black': remaining > 30
       }"
     >
-      {{ formattedTime }}
+      {{ formatTime(remaining) }}
     </span>
   </div>
 </template>
